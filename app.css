@@ -1,0 +1,186 @@
+nav ul {
+    gap: 80px;
+    list-style: none;
+    border: 1px solid #333;
+    border-radius: 50px;
+    padding: 12px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: white;
+    background-color: #111;
+    position: relative;
+    overflow: hidden; /* Nur faqat navigatsiya ichida ko'rinadi */
+}
+
+/* 🔄 DIAGANAL HOLATDA CHEKSIZ AYLANUVCHI OQ NUR */
+nav ul::before {
+    content: '';
+    position: absolute;
+    top: -50%;          /* Qiyshiq chiziq tepani ham to'liq yopishi uchun */
+    left: -150%;        /* Chapdan boshlanadi */
+    width: 30%;         /* Nurning qalinligi (biroz ingichka qildik, nafisroq chiqadi) */
+    height: 200%;       /* Balandligini oshirdik, chunki diagonal chiziq uzunroq bo'ladi */
+    
+    /* 📐 120deg — Nurni diagonal (qiyshiq) holatga keltirdi */
+    background: linear-gradient(
+        120deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.219), 
+        transparent
+    );
+    
+    animation: smoothDiagonalRun 8s infinite ease;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    padding: 5px 0;
+}
+
+li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(245, 11, 11, 0.457);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    box-shadow: 0 0 15px rgba(245, 11, 11, 0.498);
+    border-radius: 10px;
+}
+
+body {
+    background-color: black;
+}
+
+/* ⚙️ SILLIQ DIAGANAL HARAKAT ANIMATSIYASI */
+@keyframes smoothDiagonalRun {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%; /* Chapdan o'ngga diagonal holatda silliq o'tib ketadi */
+    }
+}
+
+
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 📦 Stiker qobig'i */
+.stiker-container {
+    position: relative;
+    width: 950px;
+    height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🖼️ ASOSIY STIKER RASM */
+.stiker-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Stiker shakli buzilmasligi uchun */
+    position: relative;
+    z-index: 3;
+    
+    /* 🔴 SIZ XOHLAGANDEK: Qizil chiroq stiker shaklining orqasida oddiy yonib turadi */
+    filter: drop-shadow(0 0 50px rgba(255, 0, 0, 0.8));
+}
+
+/* ⚡ STIKER CHEKKALARI BO'YLAB AYLANIB YURUVCHI OQ NEON LASER */
+.stiker-laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    
+    /* HTML ichidagi SVG filtrni rasm shakliga bog'laymiz */
+    filter: url(#stiker-kontur);
+    
+    /* Faqat ma'lum bir qismi nur bo'lib o'tishi uchun niqob (mask) */
+    -webkit-mask-image: linear-gradient(135deg, transparent 40%, #000 50%, transparent 60%);
+    mask-image: linear-gradient(135deg, transparent 40%, #000 50%, transparent 60%);
+    -webkit-mask-size: 300% 300%;
+    mask-size: 300% 300%;
+    -webkit-mask-position: 0% 0%;
+    mask-position: 0% 0%;
+    
+    /* Lazer nurini stiker atrofida cheksiz aylantirib yurgizish */
+    animation: stikerLaserRun 4s infinite linear;
+}
+
+/* ⚙️ IPHONE PHOTOS USLUBIDAGI SILLIQ LAZER AYLANISH ANIMATSIYASI */
+@keyframes stikerLaserRun {
+    0% {
+        -webkit-mask-position: 100% 100%;
+        mask-position: 100% 100%;
+    }
+    100% {
+        -webkit-mask-position: 0% 0%;
+        mask-position: 0% 0%;
+    }
+}
+
+/* Skillar joylashadigan qobiq */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;   /* Ekran kichrayganda skillar pastga chiroyli tushishi uchun */
+    gap: 15px;         /* Skillar o'rtasidagi masofa */
+    margin-top: 20px;
+}
+
+.main-info h1,p{
+    color: white;
+}
+
+/* Har bitta skill uchun maxsus badge */
+.skill-badge {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Sichqoncha skill ustiga kelganda o'sha biz ishlatayotgan sarg'ish rangda yonadi */
+.skill-badge:hover {
+    border-color: #ffcb14;
+    color: #ffcb14;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    transform: translateY(-2px);
+}
