@@ -13,19 +13,17 @@ nav ul {
     color: white;
     background-color: #111;
     position: relative;
-    overflow: hidden; /* Nur faqat navigatsiya ichida ko'rinadi */
+    overflow: hidden; 
 }
 
-/* 🔄 DIAGANAL HOLATDA CHEKSIZ AYLANUVCHI OQ NUR */
 nav ul::before {
     content: '';
     position: absolute;
-    top: -50%;          /* Qiyshiq chiziq tepani ham to'liq yopishi uchun */
-    left: -150%;        /* Chapdan boshlanadi */
-    width: 30%;         /* Nurning qalinligi (biroz ingichka qildik, nafisroq chiqadi) */
-    height: 200%;       /* Balandligini oshirdik, chunki diagonal chiziq uzunroq bo'ladi */
+    top: -50%;          
+    left: -150%;       
+    width: 30%;         
+    height: 200%;      
     
-    /* 📐 120deg — Nurni diagonal (qiyshiq) holatga keltirdi */
     background: linear-gradient(
         120deg, 
         transparent, 
@@ -74,13 +72,12 @@ body {
     background-color: black;
 }
 
-/* ⚙️ SILLIQ DIAGANAL HARAKAT ANIMATSIYASI */
 @keyframes smoothDiagonalRun {
     0% {
         left: -150%;
     }
     100% {
-        left: 150%; /* Chapdan o'ngga diagonal holatda silliq o'tib ketadi */
+        left: 150%; 
     }
 }
 
@@ -92,7 +89,6 @@ main {
     justify-content: center;
 }
 
-/* 📦 Stiker qobig'i */
 .stiker-container {
     position: relative;
     width: 950px;
@@ -102,19 +98,15 @@ main {
     justify-content: center;
 }
 
-/* 🖼️ ASOSIY STIKER RASM */
 .stiker-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Stiker shakli buzilmasligi uchun */
+    object-fit: contain; 
     position: relative;
     z-index: 3;
-    
-    /* 🔴 SIZ XOHLAGANDEK: Qizil chiroq stiker shaklining orqasida oddiy yonib turadi */
     filter: drop-shadow(0 0 50px rgba(255, 0, 0, 0.8));
 }
 
-/* ⚡ STIKER CHEKKALARI BO'YLAB AYLANIB YURUVCHI OQ NEON LASER */
 .stiker-laser {
     position: absolute;
     top: 0;
@@ -123,23 +115,16 @@ main {
     height: 100%;
     object-fit: contain;
     z-index: 2;
-    
-    /* HTML ichidagi SVG filtrni rasm shakliga bog'laymiz */
     filter: url(#stiker-kontur);
-    
-    /* Faqat ma'lum bir qismi nur bo'lib o'tishi uchun niqob (mask) */
     -webkit-mask-image: linear-gradient(135deg, transparent 40%, #000 50%, transparent 60%);
     mask-image: linear-gradient(135deg, transparent 40%, #000 50%, transparent 60%);
     -webkit-mask-size: 300% 300%;
     mask-size: 300% 300%;
     -webkit-mask-position: 0% 0%;
     mask-position: 0% 0%;
-    
-    /* Lazer nurini stiker atrofida cheksiz aylantirib yurgizish */
     animation: stikerLaserRun 4s infinite linear;
 }
 
-/* ⚙️ IPHONE PHOTOS USLUBIDAGI SILLIQ LAZER AYLANISH ANIMATSIYASI */
 @keyframes stikerLaserRun {
     0% {
         -webkit-mask-position: 100% 100%;
@@ -151,36 +136,33 @@ main {
     }
 }
 
-/* Skillar joylashadigan qobiq */
+
+
 .skills-container {
     display: flex;
-    flex-wrap: wrap;   /* Ekran kichrayganda skillar pastga chiroyli tushishi uchun */
-    gap: 15px;         /* Skillar o'rtasidagi masofa */
+    flex-wrap: wrap;   
+    gap: 15px;        
     margin-top: 20px;
+    color: white;
+}
+
+.skill-badge1{
+    padding-top: 5px;
+}
+
+.skill-badge2{
+    padding-top: 35px;
+}
+
+.skill-badge3{
+    padding-top: 65px;
+}
+
+.skill-badge4{
+    padding-top: 100px;
 }
 
 .main-info h1,p{
     color: white;
 }
 
-/* Har bitta skill uchun maxsus badge */
-.skill-badge {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 18px;
-    font-family: sans-serif;
-    font-weight: 500;
-    border: 1px solid #333;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-/* Sichqoncha skill ustiga kelganda o'sha biz ishlatayotgan sarg'ish rangda yonadi */
-.skill-badge:hover {
-    border-color: #ffcb14;
-    color: #ffcb14;
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
-    transform: translateY(-2px);
-}
